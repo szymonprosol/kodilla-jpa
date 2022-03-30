@@ -32,8 +32,8 @@ public class TaskTestSuite {
                 Task.class);
 
         EntityGraph<Task> eg = em.createEntityGraph(Task.class);
-        eg.addSubgraph("subtasks").addSubgraph("persons");
-        eg.addSubgraph("persons").addAttributeNodes("subtask", "task");
+        eg.addSubgraph("subtasks");
+        eg.addSubgraph("persons");
         query.setHint("javax.persistence.fetchgraph", eg);
 
         List<Task> tasks = query.getResultList();
@@ -43,7 +43,7 @@ public class TaskTestSuite {
             System.out.println(task);
 
             for (Person person : task.getPersons()) {
-                System.out.println("*** STEP 4 – read the person ***");
+                System.out.println("*** STEP 3 – read the person ***");
                 System.out.println(person);
             }
 

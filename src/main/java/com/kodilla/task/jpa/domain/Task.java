@@ -2,7 +2,9 @@ package com.kodilla.task.jpa.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Task {
@@ -15,10 +17,10 @@ public class Task {
     private String status;
 
     @OneToMany(targetEntity = Person.class, mappedBy = "task")
-    private List<Person> persons = new ArrayList<>();
+    private Set<Person> persons = new HashSet<>();
 
     @OneToMany(targetEntity = Subtask.class, mappedBy = "task")
-    private List<Subtask> subtasks = new ArrayList<>();
+    private Set<Subtask> subtasks = new HashSet<>();
 
     public Task() {
     }
@@ -41,11 +43,11 @@ public class Task {
         return status;
     }
 
-    public List<Person> getPersons() {
+    public Set<Person> getPersons() {
         return persons;
     }
 
-    public List<Subtask> getSubtasks() {
+    public Set<Subtask> getSubtasks() {
         return subtasks;
     }
 }
