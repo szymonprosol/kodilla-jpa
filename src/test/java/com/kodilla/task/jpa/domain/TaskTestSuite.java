@@ -33,7 +33,7 @@ public class TaskTestSuite {
 
         EntityGraph<Task> eg = em.createEntityGraph(Task.class);
         eg.addSubgraph("subtasks");
-        eg.addSubgraph("persons");
+        eg.addAttributeNodes("persons");
         query.setHint("javax.persistence.fetchgraph", eg);
 
         List<Task> tasks = query.getResultList();
